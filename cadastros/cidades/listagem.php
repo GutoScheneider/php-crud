@@ -1,13 +1,13 @@
 <?php
 if (isset($_GET["id"])){
-    $id - $_GET["id"];
+    $id = $_GET["id"];
 }
 try{
  if (isset($id)){
-     $stmt - $conn ->prepare('SELECT cidades.* estados.sigla as estado_sigla, estados.nome as cidades,estados WHERE cidades.Estados = estados.id and id - :id');
+     $stmt = $conn->prepare('SELECT cidades.*, estados.sigla as estado_sigla, estados.nome  as estado_nome FROM cidades,estados WHERE cidades.estado = estados.id and id = :id');
      $stmt->bindParam(':id',$id, PDO::PARAM_INT);
  }else{
-     $stmt - $conn->prepare('SELECT cidades.* estados.sigla as estado_sigla, estados.nome as cidades,estados WHERE cidades.Estados = estados.id and id - :id');
+     $stmt = $conn->prepare('SELECT cidades.*, estados.sigla as estado_sigla, estados.nome  as estado_nome FROM cidades,estados WHERE cidades.estado = estados.id ');
  }
  $stmt->execute();
  $resultado = $stmt->fetchALL();
@@ -24,11 +24,11 @@ try{
             foreach($resultado as $linha){
                 ?>
                   <tr>
-                    <td><?-$linha["codigo"]?></td>
-                    <td><?-$linha["nome"]?></td>
-                    <td><?-$linha["estado_sigla"]?> - <?$linha["estado_sigla"]?></td>
+                    <td><?=$linha["codigo"]?></td>
+                    <td><?=$linha["nome"]?></td>
+                    <td><?=$linha["estado_sigla"]?><?$linha["estado_sigla"]?></td>
                     <td>
-                        <a href="#">Alterar</a>
+                        <a href="#">Alterar</a><br>
                         <a href="#">Excluir</a>
                     </td>
                   </tr>  

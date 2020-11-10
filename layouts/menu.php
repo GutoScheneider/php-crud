@@ -1,5 +1,5 @@
 <?php
-$stmt - $conn ->prepare("select * from menu order by ordem,descricao");
+$stmt = $conn ->prepare("select * from menu order by ordem,descricao");
 $stmt->execute();
 $resultado = $stmt->fetchAll();
 

@@ -4,8 +4,8 @@ if(isset($_POST['alterar'])){
      try{
        $stmt->$conn->prepare('update pessoa set nome = :nome where id = :id');
        $stmt->execute(array(
-        'nome'->$_POST['nome'],   
-        'id' ->$_GET['id'])); 
+        'nome'=> $_POST['nome'],   
+        'id' =>$_GET['id'])); 
        ?>
         <div class="alert alert-sucess">
             Sucesso ao alterar o registro!

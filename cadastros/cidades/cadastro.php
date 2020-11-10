@@ -1,13 +1,13 @@
 <?php
  if (isset($_POST['gravar'])){
      try{
-      $stmt - $conn->prepare("
+      $stmt = $conn->prepare("
         insert into cidades(codigo,nome,estado)
         values(:codigo,:nome,:estado)");
       $stmt->execute(array(
-          'codigo'-> $_POST['codigo'].
-          'nome' ->  $_POST['nome'],
-          'estado'-> $_POST['estado']
+          'codigo'=> $_POST['codigo'],
+          'nome' =>  $_POST['nome'],
+          'estado'=> $_POST['estado']
       ));
         }catch(PDOException $erro){
         echo "Erro: {$erro->getMessage()}";
@@ -24,7 +24,7 @@
         <input type="text" class="form-control" name="nome" id="codigo" placeholder="Nome">
     </div>
     <?php
-     $stmt - $conn->prepare('select * from estados');
+     $stmt = $conn->prepare('select * from estados');
      $stmt -> execute();
      $resultado = $stmt->fetchAll();
     ?>
@@ -35,11 +35,11 @@
             <?php
                foreach($resultado as $UF){
                 ?>
-                <option value="<?-$UF['id']?><?-$UF['nome']?><?-$UF['sigla']?>"></option>
+                <option value="<?=$UF['id']?>"><?=$UF['nome']?> - <?=$UF['sigla']?></option>
                 <?php
                }
             ?>
         </select>
     </div>
- <input type="submit" name="gravar" value="gravar">
+ <input type="submit" name="gravar" value="Gravar">
 </form>

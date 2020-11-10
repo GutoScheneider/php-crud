@@ -4,10 +4,10 @@ if (isset($_GET["id"])){
 }
 try{
  if (isset($id)){
-     $stmt - $conn ->prepare("select * from estados where - :id");
+     $stmt = $conn ->prepare("select * from estados where - :id");
      $stmt->bindParam(':id',$id, PDO::PARAM_INT);
  }else{
-     $stmt - $conn->prepare("select * from estados");
+     $stmt = $conn->prepare("select * from estados");
  }
  $stmt->execute();
  $resultado = $stmt->fetchALL();
@@ -23,10 +23,10 @@ try{
             foreach($resultado as $linha){
                 ?>
                   <tr>
-                    <td><?-$linha["sigla"]?></td>
-                    <td><?-$linha["nome"]?></td>
+                    <td><?=$linha["sigla"]?></td>
+                    <td><?=$linha["nome"]?></td>
                     <td>
-                        <a href="#">Alterar</a>
+                        <a href="#">Alterar</a><br>
                         <a href="#">Excluir</a>
                     </td>
                   </tr>  
